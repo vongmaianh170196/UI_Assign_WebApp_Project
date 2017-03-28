@@ -1,0 +1,42 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Create</title>
+	<link rel="stylesheet" href="create-style.css">
+</head>
+<body>
+  <header>
+    <div>
+    <h1>PlanningPoker</h1>
+    <button>Log out</button>
+      <button>Create a new game</button>
+      </div>
+  </header>
+  <div class="container">
+    <h1>CREATE A NEW GAME</h1>
+    <div class="fom">
+    <form action="creat_game.php" method="get">
+      <label for="gname">Game Name</label>
+      <br>
+      <input type="text" id="gname" name="gname"></input>
+    <br></br>
+    <label for="descript">Description</label>
+  <br>
+    <textarea id="descript" rows="7" cols="50"></textarea> 
+  <br></br>
+    <label for="story">Enter Stories</label>
+  <br>
+    <textarea id="story" rows="10" cols="50"></textarea>
+  <br>
+  <button>Convert to stories</button>
+  <div class="btn">
+    <button type="reset">Cancel</button>
+    <button type="submit">Save</button>
+    <button type="submit">Save & Start</button>
+  </div>
+  </div>
+    </form>
+  </div>
+  
+  </body>
+</html>

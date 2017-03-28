@@ -1,0 +1,137 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Create</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="board-style.css">
+</head>
+<body>
+  <header>
+    <div>
+    <h1>PlanningPoker</h1>
+    <button>Log out</button>
+      <button class="invite">Invite</button>
+      <button>Dash board </button>
+      </div>
+  </header>
+  <div class="container">
+    <div class="main">
+        <!----NAME OF STORY
+      --->
+      <div class="story-name">
+        <h2>Name of story</h2>
+      </div>
+      <hr>      
+      <!----OPTION: FLIPS, RESET
+      --->
+      <div class="options">
+        <ul>
+          <li><button>FLIPS</button></li>
+          <li><button type="reset">RESET <i class="fa fa-refresh"></i></button></li>
+          <li><button>NEXT STORY >></button></li>
+        </ul>
+      </div>
+        <hr>
+      <!----BOARD
+      --->
+      <div class="board">
+        <div class="player-cards">
+        </div>
+        <p>Name of Player</p>
+        </div>
+        <hr>
+      <!----CARDS
+      --->
+        
+        <div class="cards">
+         <div value="0" class="player-cards">
+              <p>0</p>
+            </div>
+          <div value="1" class="player-cards">
+              <p>1</p>
+            </div>
+          <div value="2" class="player-cards">
+              <p>2</p>
+            </div>
+          <div value="3" class="player-cards">
+              <p>3</p>
+            </div>
+          <div value="5" class="player-cards">
+              <p>5</p>
+            </div>
+          <div value="8" class="player-cards">
+              <p>8</p>
+            </div>
+          <div value="13" class="player-cards">
+              <p>13</p>
+            </div>
+          <div value="21" class="player-cards">
+              <p>21</p>
+            </div>
+          <div value="34" class="player-cards">
+              <p>34</p>
+            </div>
+          <div value="55" class="player-cards">
+              <p>55</p>
+            </div>
+          <div value="89" class="player-cards">
+              <p>89</p>
+            </div>
+          <div value="pass" class="player-cards-pass" >
+              <p>Pass</p>
+            </div>
+        </div>
+      <!----END BOARD 
+      --->  
+    </div>
+    <div class="right-column">
+      <div class="score">
+        <p>0</p>
+      </div>
+      <div class="details-button">
+        <div class="buttons">
+           <!----Introduction of Game
+      --->
+          <button>I</button>
+           <!----NAME OF PEOPLE WHO IS PLAYING
+        EX: Manh, Linh+
+      --->
+          <button>P</button>
+           <!----sTORIES OF THE GAME
+      --->
+          <button>S</button>
+           <!----gROUPCHAT
+      --->
+          <button>C</button>
+        </div>
+        <div class="button-content">
+           <!----when intro-button is clicked
+      --->
+         <div class="intro">        
+          <p>Introduction about the game</p> 
+         </div>
+           <!----when people-button is clicked
+      --->
+         <div class="people">
+          <p>Name of people who is playing</p> 
+        </div>
+           <!----when story-button is clicked
+      --->
+        <div class="story">
+          <p>Stories</p> 
+        </div>
+           <!----when groupchat-button is clicked
+      --->
+         <div class="groupchat">
+          <p>Hi</p> 
+         </div>
+       </div>
+      </div>
+      <button class="add">+ Add a story </button>
+    </div>
+    
+  </div>
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="app.js" type="text/javascript" charset="utf-8"></script>
+  </body>
+</html>
