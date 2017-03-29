@@ -66,3 +66,14 @@ label{
   font-weight: bold;
   font-size: 1.2rem;
 }
+/****Button div***/
+.btn{
+  display: flex;
+  justify-content: center;
+}
+.btn p{
+  font-size: 2rem;
+}
+.btn button{
+  margin: 2%;
+}
