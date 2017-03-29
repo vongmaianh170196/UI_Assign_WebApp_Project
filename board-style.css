@@ -38,7 +38,7 @@ header button:hover{
   height: 90%;
   display: flex;
   flex-direction: row;
- }
+}
 /****MAIN PART***/
 .container .main{
   width: 70%;
@@ -58,7 +58,7 @@ header button:hover{
 .score{
   height: 20%;
   background-color: rgb(0, 128, 43);
-   margin: 2% 2%;
+  margin: 2% 2%;
 }
 .score p{
   font-size: 40px;
@@ -92,9 +92,9 @@ header button:hover{
 /**** DETAILED BUTTONS****/
 .detail-button{
   width: 30%;
-  background-color: rgb(204, 204, 179); 
+  background-color: rgb(204, 204, 179);
   height: 70%;
- }
+}
 /***ADD BUTTON***/
 .add{
   width: 50%;
@@ -117,11 +117,11 @@ header button:hover{
 .options ul li {
   display: inline;
   margin: 0 2%;
-  }
+}
 li button{
   border: none;
   background-color: rgb(216, 243, 216);
-   font-size: 1.5rem;
+  font-size: 1.5rem;
   color: rgb(0, 26, 0);
   height: 10%;
 }
@@ -131,7 +131,7 @@ li button{
 }
 .board .player-cards{
   width: 10%;
-  height: 50%;
+  height: 30%;
   border-radius: 5%;
   border: 3px solid white;
 }
@@ -141,14 +141,14 @@ li button{
   flex-direction: row;
   height: 30%;
 }
-.player-cards{
+.player-cards, .picked_cards{
   background-color: rgb(0, 102, 0);
   width: 7%;
   height: 90%;
   border-radius: 5%;
   border: 3px solid white;
 }
-.player-cards p{
+.player-cards h1{
   color: white;
   text-align: center;
   font-size: 3rem;
@@ -165,4 +165,13 @@ li button{
 }
 
 
+/*********
+noname
+********/
+.picked{
+  color: red;
+}
 
+.flips{
+  cursor: pointer;
+}
