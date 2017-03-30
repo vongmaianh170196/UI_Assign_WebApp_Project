@@ -148,6 +148,9 @@ li button{
   border-radius: 5%;
   border: 3px solid white;
 }
+.picked_cards{
+  height: 45%;
+}
 .player-cards h1{
   color: white;
   text-align: center;

@@ -7,9 +7,10 @@ $('.picked').hide();
 
 $(document).ready(function(){
 
-    $('.player-cards').click(function(){
+    $('.player-cards').click(function(e){
+        var cardID = e.target.id
+        console.log(cardID)
         $('.picked').show();
-        console.log($(this).val());
     });
 
 });
