@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Lato');
 body{
+  margin: 0px;
   background-color: rgb(216, 243, 216);
   font-family: 'Lato', sans-serif;
 }
@@ -35,10 +36,11 @@ header button:hover{
 
 /****CONTAINER***/
 .container {
+  margin: 7px;
   height: 90%;
   display: flex;
   flex-direction: row;
-}
+ }
 /****MAIN PART***/
 .container .main{
   width: 70%;
@@ -52,13 +54,12 @@ header button:hover{
   flex-direction: column;
   width: 30%;
   background-color: rgb(209, 224, 213);
-  border: 2px solid black;
 }
 /****SCORE DIV****/
 .score{
   height: 20%;
   background-color: rgb(0, 128, 43);
-  margin: 2% 2%;
+   margin: 2% 2%;
 }
 .score p{
   font-size: 40px;
@@ -82,6 +83,14 @@ header button:hover{
   background-color: rgb(0, 26, 0);
   color:rgb(204, 255, 204);
 }
+.buttons button:visited{
+  width: 20%;
+  margin: 0% 0%;
+  padding: 2% 0%;
+  font-size: 1.5rem;
+  background-color: rgba(0, 26, 0, 0.5);
+  color:rgb(204, 255, 204);
+}
 /***BUTTON-CONTENT***/
 .button-content{
   background-color: rgb(194, 194, 163);
@@ -92,9 +101,9 @@ header button:hover{
 /**** DETAILED BUTTONS****/
 .detail-button{
   width: 30%;
-  background-color: rgb(204, 204, 179);
+  background-color: rgb(204, 204, 179); 
   height: 70%;
-}
+ }
 /***ADD BUTTON***/
 .add{
   width: 50%;
@@ -109,72 +118,6 @@ header button:hover{
   color:rgb(255, 0, 0);
   padding: 0 1%;
 }
-/****STRY NAME***/
-.story-name{
-  height: 10%;
-}
-/****OPTIONSrgb(0, 26, 0)****/
-.options ul li {
-  display: inline;
-  margin: 0 2%;
-}
-li button{
-  border: none;
-  background-color: rgb(216, 243, 216);
-  font-size: 1.5rem;
-  color: rgb(0, 26, 0);
-  height: 10%;
-}
-/****BOARD GAME****/
-.board{
-  height: 70%;
-}
-.board .player-cards{
-  width: 10%;
-  height: 30%;
-  border-radius: 5%;
-  border: 3px solid white;
-}
-/****CARDS****/
-.cards{
-  display:flex;
-  flex-direction: row;
-  height: 30%;
-}
-.player-cards, .picked_cards{
-  background-color: rgb(0, 102, 0);
-  width: 7%;
-  height: 90%;
-  border-radius: 5%;
-  border: 3px solid white;
-}
-.picked_cards{
-  height: 45%;
-}
-.player-cards h1{
-  color: white;
-  text-align: center;
-  font-size: 3rem;
-}
-.player-cards-pass {
-  width: 7%;
-  height: 90%;
-  border-radius: 5%;
-  border: 3px solid white;
-  background-color: black;
-  color: white;
-  text-align: center;
-  font-size: 2rem;
-}
 
 
-/*********
-noname
-********/
-.picked{
-  color: red;
-}
 
-.flips{
-  cursor: pointer;
-}

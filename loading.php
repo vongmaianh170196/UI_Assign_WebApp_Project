@@ -1,9 +1,25 @@
+<?php
+include 'config.php';
+session_start();
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+session_start();
+if(!isset($_SESSION['user']) AND !isset($_SESSION['modPlayer'])){
+    header('location: index.html');
+}
+//elseif(!isset($_SESSION['user']) AND isset($_SESSION['modPlayer'])){
+//    header('location: loginAsPlayer.php');
+//}
+//else{
+//    echo'
+?>
+    <!DOCTYPE html>
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Create</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="loading-style.css">
+	<link rel="stylesheet" href="css/loading-style.css">
 </head>
 <body>
   <header>
@@ -16,12 +32,20 @@
   </header>
   <div class="container">
     <div class="main">
+    <h2>Game name </h2> <? echo $_SESSION['gameName']?>
       <h3>People has arrived</h3>
+
+
       <!----NAME OF PEOPLE WHO ARRIVE
         EX: Manh, Linh+
       --->
-      <p>Name</p>
-    </div>
+        <?
+        $query = "SELECT  `player_name` FROM `player` WHERE player_id = '".$_SESSION['modPlayer']."' ";
+        $result = mysqli_query($conn, $query);
+        while ($row = mysqli_fetch_array($result)){
+            echo '<p>'.$row['player_name'].'</p>';
+        }?>
+            </div>
     <div class="right-column">
       <div class="score">
         <p>0</p>
@@ -73,3 +97,5 @@
 	<script src="app.js" type="text/javascript" charset="utf-8"></script>
   </body>
 </html>
+
+

@@ -2,10 +2,12 @@
 
 @import url('https://fonts.googleapis.com/css?family=Lato');
 body{
+  margin: 0px;
   background-color: rgb(216, 243, 216);
   font-family: 'Lato', sans-serif;
 }
 .container{
+  margin: 7px;
   text-align: center;
   flex-direction: row-reverse; 
   flex-wrap: wrap; 

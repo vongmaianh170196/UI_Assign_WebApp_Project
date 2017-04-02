@@ -2,7 +2,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Create</title>
-	<link rel="stylesheet" href="create-style.css">
+	<link rel="stylesheet" href="css/create-style.css">
 </head>
 <body>
   <header>
@@ -15,27 +15,28 @@
   <div class="container">
     <h1>CREATE A NEW GAME</h1>
     <div class="fom">
-    <form action="creat_game.php" method="get">
+    <form action="create_game.php" method="post">
       <label for="gname">Game Name</label>
       <br>
-      <input type="text" id="gname" name="gname"></input>
-    <br></br>
+      <input type="text" id="gname" name="gname">
+    <br>
     <label for="descript">Description</label>
   <br>
-    <textarea id="descript" rows="7" cols="50"></textarea> 
-  <br></br>
-    <label for="story">Enter Stories</label>
+    <textarea id="descript" rows="7" cols="50" name="descript"></textarea>
   <br>
-    <textarea id="story" rows="10" cols="50"></textarea>
-  <br>
-  <button>Convert to stories</button>
+    <!--<label for="story">Enter Stories</label>-->
+  <!--<br>-->
+    <!--<textarea id="story" rows="10" cols="50" name="story"></textarea>-->
+  <!--<br>-->
+  <!--<button>Convert to stories</button>-->
   <div class="btn">
     <button type="reset">Cancel</button>
-    <button type="submit">Save</button>
+    <!--<button type="submit">Save</button>-->
     <button type="submit">Save & Start</button>
   </div>
-  </div>
+
     </form>
+    </div>
   </div>
   
   </body>
