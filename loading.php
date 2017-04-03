@@ -94,7 +94,17 @@ if(!isset($_SESSION['user']) AND !isset($_SESSION['modPlayer'])){
     
   </div>
    <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="app.js" type="text/javascript" charset="utf-8"></script>
+<!--	<script src="app.js" type="text/javascript" charset="utf-8"></script>-->
+  <script>
+      $('document').ready(function () {
+          $(".invite").click(function(event){
+
+              event.preventDefault();
+              prompt("Copy this link to share fill game name ", "loginAsPlayer.php");
+          });
+
+      })
+  </script>
   </body>
 </html>
 
