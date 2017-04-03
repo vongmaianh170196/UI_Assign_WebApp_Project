@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
 <header>
     <div>
         <h1>PlanningPoker</h1>
-        <button>Log out</button>
+        <a href="logout.php"><button>Log out</button></a>
         <button class="invite">Invite</button>
         <button>Dash board </button>
     </div>
@@ -136,5 +136,32 @@
 <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="app.js" type="text/javascript" charset="utf-8"></script>
 <script src="board_game.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    $('.picked').hide();
+
+
+
+    $(document).ready(function(){
+
+        $('.player-cards').click(function(e){
+            var cardID = e.target.id
+            console.log(cardID)
+            $('.picked').show();
+            $.ajax({
+                url: 'gameHandling.php',
+                type: 'POST',
+                data: {
+                    pickedCard: cardID
+                },
+                success: function (success) {
+                    alert(success);
+                }
+            })
+
+        });
+
+    });
+
+</script>
 </body>
 </html>

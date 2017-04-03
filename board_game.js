@@ -11,6 +11,17 @@ $(document).ready(function(){
         var cardID = e.target.id
         console.log(cardID)
         $('.picked').show();
+        $.ajax({
+            url: 'gameHandling.php',
+            type: 'POST',
+            data: {
+                pickedCard: cardID
+            },
+            success: function (success) {
+                alert(success);
+            }
+        })
+
     });
 
 });

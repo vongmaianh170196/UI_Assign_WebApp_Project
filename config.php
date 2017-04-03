@@ -13,7 +13,7 @@ $password = 'root';
 $db = 'planningPoker';
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $db);
+$conn = mysqli_connect($servername, $username, $password, $db);
 // Check connection
 
 function finnish_dateformat($date)

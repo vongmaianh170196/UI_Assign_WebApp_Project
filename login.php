@@ -19,9 +19,8 @@ if(isset($_POST['email'])
  {
      while ($row = mysqli_fetch_array($check)){
          $_SESSION['user'] = $row['player_id'];
-         $_SESSION['modPlayer'] = $row['player_id'];
      }
-     header('location: create_game.html');
+     header('location: list_group.php');
 
  }else
      {

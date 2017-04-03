@@ -25,14 +25,14 @@ if(!isset($_SESSION['user']) AND !isset($_SESSION['modPlayer'])){
   <header>
     <div>
     <h1>PlanningPoker</h1>
-    <button>Log out</button>
+        <a href="logout.php"><button>Log out</button></a>
       <button class="invite">Invite</button>
-      <button>Start game <i class="fa fa-arrow-right"></i> </button>
+        <a href="board_game.html"><button>Start game <i class="fa fa-arrow-right"></i> </button></a>
       </div>
   </header>
   <div class="container">
     <div class="main">
-    <h2>Game name </h2> <? echo $_SESSION['gameName']?>
+    <h2>Game name </h2>
       <h3>People has arrived</h3>
 
 
@@ -40,11 +40,16 @@ if(!isset($_SESSION['user']) AND !isset($_SESSION['modPlayer'])){
         EX: Manh, Linh+
       --->
         <?
-        $query = "SELECT  `player_name` FROM `player` WHERE player_id = '".$_SESSION['modPlayer']."' ";
+        echo $_SESSION['gameID'];
+        $query = "SELECT player.player_name FROM player JOIN (SELECT * FROM game where game.game_id = '".$_SESSION['gameID']."') as current_game ON player.player_id = current_game.ref_moderator
+ ";
         $result = mysqli_query($conn, $query);
         while ($row = mysqli_fetch_array($result)){
             echo '<p>'.$row['player_name'].'</p>';
         }?>
+        <div class="playersList">
+
+        </div>
             </div>
     <div class="right-column">
       <div class="score">
@@ -100,9 +105,17 @@ if(!isset($_SESSION['user']) AND !isset($_SESSION['modPlayer'])){
           $(".invite").click(function(event){
 
               event.preventDefault();
-              prompt("Copy this link to share fill game name ", "loginAsPlayer.php");
+              prompt("Copy this link to share fill game name ", window.location.href);
           });
-
+//          var getPlayers = function () {
+//              $.get("getPlayers.php", function(data){
+//                  $('.playersList').html(data);
+//              });
+//
+//          }
+          $.ajaxSetup({cache:false});
+          // realtime with 1 second loop
+          setInterval(function() {$('.playersList').load('getPlayers.php');}, 1000);
       })
   </script>
   </body>
