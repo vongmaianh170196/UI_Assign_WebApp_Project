@@ -94,41 +94,49 @@
             <div class="buttons">
                 <!----Introduction of Game
            --->
-                <button>I</button>
+                <button id="intro">I</button>
                 <!----NAME OF PEOPLE WHO IS PLAYING
              EX: Manh, Linh+
            --->
-                <button>P</button>
+                <button id="people">P</button>
                 <!----sTORIES OF THE GAME
            --->
-                <button>S</button>
+                <button id="story">S</button>
                 <!----gROUPCHAT
            --->
-                <button>C</button>
+                <button id="groupchat">C</button>
             </div>
             <div class="button-content">
-                <!----when intro-button is clicked
-           --->
-                <div class="intro">
-                    <p>Introduction about the game</p>
+                <div class="content">
+                    <div class="chatConversation">
+
+                    </div>
+
                 </div>
-                <!----when people-button is clicked
-           --->
-                <div class="people">
-                    <p>Name of people who is playing</p>
-                </div>
-                <!----when story-button is clicked
-           --->
-                <div class="story">
-                    <p>Stories</p>
-                </div>
-                <!----when groupchat-button is clicked
-           --->
-                <div class="groupchat">
-                    <p>Hi</p>
-                </div>
+                <!--&lt;!&ndash;&#45;&#45;when intro-button is clicked-->
+           <!-- -&ndash;&gt;-->
+                <!--<div class=>-->
+                    <!--<p>Introduction about the game</p>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;&#45;&#45;when people-button is clicked-->
+           <!-- -&ndash;&gt;-->
+                <!--<div class=>-->
+                    <!--<p>Name of people who is playing</p>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;&#45;&#45;when story-button is clicked-->
+           <!-- -&ndash;&gt;-->
+                <!--<div class=>-->
+                    <!--<p>Stories</p>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;&#45;&#45;when groupchat-button is clicked-->
+           <!-- -&ndash;&gt;-->
+                <!--<div class=>-->
+                    <!--<p>Hi</p>-->
+                <!--</div>-->
+
             </div>
         </div>
+        <input type="text" name="message" id="message">
         <button class="add">+ Add a story </button>
     </div>
 
@@ -159,6 +167,46 @@
             })
 
         });
+        $('#people').click(function (){
+            $.ajaxSetup({cache:false});
+            // realtime with 1 second loop
+            setInterval(function() {$('.content').load('getPlayers.php');}, 1000);
+            });
+//        $('#groupchat').click(function () {
+//            var chatHtml = "<div class='chatConversation'>" +
+//                "</div>"
+////                "<input type='text' name='message' id='message'>";
+//            $('.content').html(chatHtml)
+//        });
+        $('#message').keypress(function () {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') {
+                console.log('hihi')
+                console.log($('#message').val())
+                // send mess Ajax
+                content_ajax()
+            }
+        });
+        function content_ajax() {
+            $.ajax({
+                    url: "chatContent.php"
+                    , type: "post"
+                    , dateType: "text"
+                    , data: {
+                        message: $('#message').val(),
+                    }
+                    , success: function (result) {
+                        $('#message').val('')
+                        $(".chatConversation").html(result)
+                    }
+                }
+            )
+        };
+        $.ajaxSetup({cache:false});
+        // real time with 1 second loop
+        setInterval(function() {$('.chatConversation').load('chatContent.php');}, 1000);
+
+
 
     });
 

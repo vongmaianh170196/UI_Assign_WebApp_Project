@@ -9,4 +9,8 @@ include 'config.php';
 session_start();
 echo'hihi';
 
-echo $_POST['pickedCard'];
+//echo $_POST['pickedCard'];
+if(isset($_GET['people'])){
+    echo $_GET['people'];
+    echo 'nhan duoc get';
+}

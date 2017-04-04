@@ -40,13 +40,7 @@ if(!isset($_SESSION['user']) AND !isset($_SESSION['modPlayer'])){
         EX: Manh, Linh+
       --->
         <?
-        echo $_SESSION['gameID'];
-        $query = "SELECT player.player_name FROM player JOIN (SELECT * FROM game where game.game_id = '".$_SESSION['gameID']."') as current_game ON player.player_id = current_game.ref_moderator
- ";
-        $result = mysqli_query($conn, $query);
-        while ($row = mysqli_fetch_array($result)){
-            echo '<p>'.$row['player_name'].'</p>';
-        }?>
+        echo $_SESSION['gameID']; ?>
         <div class="playersList">
 
         </div>
