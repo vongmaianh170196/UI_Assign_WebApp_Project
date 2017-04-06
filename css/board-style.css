@@ -21,10 +21,17 @@ header{
   background-color: rgb(83, 198, 83);
 }
 /****HEADER BUTTON***/
-header button{
+header  button{
   background-color: rgb(25, 77, 51);
   color:rgb(159, 224, 191);
   padding: 0 1%;
+  margin: 7px;
+  font-size: 1.5rem;
+}
+header  a button{
+  background-color: rgb(25, 77, 51);
+  color:rgb(159, 224, 191);
+  padding: 20% 2.5%;
   margin: 7px;
   font-size: 1.5rem;
 }
