@@ -60,8 +60,11 @@ header button:hover{
   display: flex;
   flex-direction: column;
   width: 30%;
+  height: auto;
+  min-height: 600px;
   background-color: rgb(209, 224, 213);
   border: 2px solid black;
+  position: absolute;
 }
 /****SCORE DIV****/
 .score{
@@ -136,7 +139,8 @@ li button{
 }
 /****BOARD GAME****/
 .board{
-  height: 70%;
+  height: auto;
+  min-height: 300px;
 }
 .board .player-cards{
   width: 10%;
@@ -150,7 +154,7 @@ li button{
   flex-direction: row;
   height: 30%;
 }
-.player-cards, .picked_cards{
+.player-cards{
   background-color: rgb(0, 102, 0);
   width: 7%;
   height: 90%;
@@ -158,6 +162,10 @@ li button{
   border: 3px solid white;
 }
 .picked_cards{
+  background-color: rgb(0, 102, 0);
+  border-radius: 5%;
+  border: 3px solid white;
+  width: 80px !important;
   height: 45%;
 }
 .player-cards h1{
@@ -176,6 +184,11 @@ li button{
   font-size: 2rem;
 }
 
+.users_card{
+  display: flex;
+  flex-direction: row ;
+  flex-wrap: wrap;
+}
 
 /*********
 noname

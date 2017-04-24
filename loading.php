@@ -27,7 +27,7 @@ if(!isset($_SESSION['user']) AND !isset($_SESSION['modPlayer'])){
     <h1>PlanningPoker</h1>
         <a href="logout.php"><button>Log out</button></a>
       <button class="invite">Invite</button>
-        <a href="board_game.html"><button>Start game <i class="fa fa-arrow-right"></i> </button></a>
+        <a href="board_game.php"><button>Start game <i class="fa fa-arrow-right"></i> </button></a>
       </div>
   </header>
   <div class="container">
@@ -45,51 +45,40 @@ if(!isset($_SESSION['user']) AND !isset($_SESSION['modPlayer'])){
 
         </div>
             </div>
-    <div class="right-column">
-      <div class="score">
-        <p>0</p>
+      <div class="right-column">
+          <div class="score">
+              <p>0</p>
+          </div>
+          <div class="details-button">
+              <div class="buttons">
+                  <!----Introduction of Game
+             --->
+                  <button id="intro">I</button>
+                  <!----NAME OF PEOPLE WHO IS PLAYING
+               EX: Manh, Linh+
+             --->
+                  <button id="people">P</button>
+                  <!----sTORIES OF THE GAME
+             --->
+                  <button id="story">S</button>
+                  <!----gROUPCHAT
+             --->
+                  <button id="groupchat">C</button>
+              </div>
+              <div class="button-content">
+                  <div class="content">
+                      <div class="chatConversation">
+
+                      </div>
+
+                  </div>
+
+
+              </div>
+          </div>
+          <input type="text" name="message" id="message">
+          <button class="add">+ Add a story </button>
       </div>
-      <div class="details-button">
-        <div class="buttons">
-           <!----Introduction of Game
-      --->
-          <button>I</button>
-           <!----NAME OF PEOPLE WHO IS PLAYING
-        EX: Manh, Linh+
-      --->
-          <button>P</button>
-           <!----sTORIES OF THE GAME
-      --->
-          <button>S</button>
-           <!----gROUPCHAT
-      --->
-          <button>C</button>
-        </div>
-        <div class="button-content">
-           <!----when intro-button is clicked
-      --->
-         <div class="intro">        
-          <p>Introduction about the game</p> 
-         </div>
-           <!----when people-button is clicked
-      --->
-         <div class="people">
-          <p>Name of people who is playing</p> 
-        </div>
-           <!----when story-button is clicked
-      --->
-        <div class="story">
-          <p>Stories</p> 
-        </div>
-           <!----when groupchat-button is clicked
-      --->
-         <div class="groupchat">
-          <p>Hi</p> 
-         </div>
-       </div>
-      </div>
-      <button class="add">+ Add a story </button>
-    </div>
     
   </div>
    <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
@@ -101,15 +90,47 @@ if(!isset($_SESSION['user']) AND !isset($_SESSION['modPlayer'])){
               event.preventDefault();
               prompt("Copy this link to share fill game name ", window.location.href);
           });
-//          var getPlayers = function () {
-//              $.get("getPlayers.php", function(data){
-//                  $('.playersList').html(data);
-//              });
-//
-//          }
+
           $.ajaxSetup({cache:false});
           // realtime with 1 second loop
-          setInterval(function() {$('.playersList').load('getPlayers.php');}, 1000);
+          setInterval(
+              function() {
+                  $('.playersList').load('getPlayers.php');
+                  $('.chatConversation').load('chatContent.php');
+              }
+              , 1000);
+
+          $('#message').keypress(function () {
+              var keycode = (event.keyCode ? event.keyCode : event.which);
+              if (keycode == '13') {
+                  console.log('hihi')
+                  console.log($('#message').val())
+                  // send mess Ajax
+                  content_ajax()
+              }
+          });
+          function content_ajax() {
+              $.ajax({
+                      url: "chatContent.php"
+                      , type: "post"
+                      , dateType: "text"
+                      , data: {
+                          message: $('#message').val(),
+                      }
+                      , success: function (result) {
+                          $('#message').val('')
+                          $(".chatConversation").html(result)
+                      }
+                  }
+              )
+          };
+//          $.ajaxSetup({cache:false});
+//          // real time with 1 second loop
+//          setInterval(function() {$('.chatConversation').load('chatContent.php');}, 1000);
+//
+//
+//
+//      });
       })
   </script>
   </body>

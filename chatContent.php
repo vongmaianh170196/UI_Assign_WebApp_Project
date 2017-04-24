@@ -18,8 +18,7 @@ if(isset($_POST['message'])
 
 //  echo mysqli_error($conn);
 }
-$result = mysqli_query($conn, "SELECT *
-    FROM simple_chat WHERE ref_game = '".$_SESSION['gameID']."'
+$result = mysqli_query($conn, "SELECT message, message_time, username, player.player_name FROM simple_chat JOIN player on simple_chat.username = player.player_id WHERE ref_game = '".$_SESSION['gameID']."'
     ORDER BY message_time DESC");
 while($row = mysqli_fetch_array($result))
 {
@@ -39,7 +38,7 @@ while($row = mysqli_fetch_array($result))
         echo	'<div class="msg">';
         echo '<p>'.$row['message'].'</p>';
         echo		'<div class="info-msg">';
-        echo        "<strong>".$row['username']."</strong>";
+        echo        "<strong>".$row['player_name']."</strong>";
         echo " ".finnish_dateformat($row['message_time']);
         echo "<br>";
         echo '</div>';

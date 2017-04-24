@@ -1,3 +1,25 @@
+<?php
+include 'config.php';
+session_start();
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+session_start();
+if(!isset($_SESSION['user']) AND !isset($_SESSION['modPlayer'])){
+    header('location: index.html');
+}
+$query ="SELECT ref_moderator FROM game WHERE game_id = '".$_SESSION['gameID']."' ;";
+$check = mysqli_query($conn, $query);
+
+if(mysqli_num_rows($check))
+{
+    while ($row = mysqli_fetch_array($check)){
+        $_SESSION['modPlayer'] = $row['ref_moderator'];
+    }
+    header('location: list_group.php');
+
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,16 +52,60 @@
                 <li><button onChange="showCard" class="flips">FLIPS</button></li>
                 <li><button type="reset">RESET <i class="fa fa-refresh"></i></button></li>
                 <li><button>NEXT STORY >></button></li>
+                <?php if($_SESSION['user']==$_SESSION['modPlayer']){
+                    echo "<li><button id='newRound'>NEW ROUND</button></li>";
+                } ?>
+
+
             </ul>
         </div>
         <hr>
         <!----BOARD
         --->
         <div class="board">
-            <div class="picked_cards">
-                <h1 class="picked"> Pick</h1>
+            <div class="users_card">
+<!--                <div style="width: 200px;">-->
+<!--                    <div class="picked_cards">-->
+<!--                        <h1 class="picked"> Pick</h1>-->
+<!--                    </div>-->
+<!--                    <p>linh@gmail.com</p>-->
+<!--                </div>-->
+<!--                <div style="width: 200px;">-->
+<!--                    <div class="picked_cards">-->
+<!--                        <h1 class="picked"> Pick</h1>-->
+<!--                    </div>-->
+<!--                    <p>linh@gmail.com</p>-->
+<!--                </div>-->
+<!--                <div style="width: 200px;">-->
+<!--                    <div class="picked_cards">-->
+<!--                        <h1 class="picked"> Pick</h1>-->
+<!--                    </div>-->
+<!--                    <p>linh@gmail.com</p>-->
+<!--                </div>-->
+<!--                <div style="width: 200px;">-->
+<!--                    <div class="picked_cards">-->
+<!--                        <h1 class="picked"> Pick</h1>-->
+<!--                    </div>-->
+<!--                    <p>linh@gmail.com</p>-->
+<!--                </div>-->
+<!--                <div style="width: 200px;">-->
+<!--                    <div class="picked_cards">-->
+<!--                        <h1 class="picked"> Pick</h1>-->
+<!--                    </div>-->
+<!--                    <p>linh@gmail.com</p>-->
+<!--                </div>-->
+<!--                <div style="width: 200px;">-->
+<!--                    <div class="picked_cards">-->
+<!--                        <h1 class="picked"> Pick</h1>-->
+<!--                    </div>-->
+<!--                    <p>linh@gmail.com</p>-->
+<!--                </div>-->
             </div>
-            <p>Name of Player</p>
+
+
+
+
+            <p class="currentRound"> <?php echo $_SESSION['currentRound'];?></p>
         </div>
         <hr>
         <!----CARDS
@@ -124,7 +190,6 @@
 </div>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="app.js" type="text/javascript" charset="utf-8"></script>
-<script src="board_game.js" type="text/javascript" charset="utf-8"></script>
 <script>
     $('.picked').hide();
 
@@ -159,6 +224,9 @@
 ////                "<input type='text' name='message' id='message'>";
 //            $('.content').html(chatHtml)
 //        });
+
+
+//        READING KEYPRESS TO SEND MESSAGE
         $('#message').keypress(function () {
             var keycode = (event.keyCode ? event.keyCode : event.which);
             if (keycode == '13') {
@@ -168,6 +236,65 @@
                 content_ajax()
             }
         });
+
+//        ADDING NEW ROUND
+        $('#newRound').click(function () {
+            $.ajax(
+                {
+                    url: "gameHandling/round.php"
+                    , type: "post"
+                    , dateType: "text"
+                    , data: {
+                    newRound: 'newRound',
+                }
+                    , success: function (result) {
+
+                }
+                }
+            )
+
+        });
+
+
+
+
+//        SENDING PICKED CARD TO THE DATABASE
+        $('.picked').hide();
+
+        $('.player-cards').click(function(e){
+            var cardID = e.target.id
+            console.log(cardID)
+            $('.picked').show();
+            $.ajax({
+                url: 'gameHandling/pickedCard.php',
+                type: 'POST',
+                data: {
+                    pickedCard: cardID
+                },
+                success: function (success) {
+                    alert(success);
+                }
+            })
+
+        });
+
+
+    $(".flips").click(function(){
+        var href = this.href;
+        $.ajax({
+            url: '',
+            type: 'POST',
+            data: { target: href },
+            success: function (success) {
+                setTimeout(function (){
+
+                }, 1000)
+            }
+        });
+    });
+
+
+    //LOADING CHAT CONTENT
         function content_ajax() {
             $.ajax({
                     url: "chatContent.php"
@@ -185,7 +312,14 @@
         };
         $.ajaxSetup({cache:false});
         // real time with 1 second loop
-        setInterval(function() {$('.chatConversation').load('chatContent.php');}, 1000);
+        setInterval(
+            function()
+            {
+                $('.chatConversation').load('chatContent.php');
+                $('.currentRound').load('gameHandling/round.php');
+                $('.users_card').load('gameHandling/cardLoading.php');
+            }
+            , 1000);
 
 
 
